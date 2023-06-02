@@ -5,9 +5,8 @@ import java.util.Objects;
 
 public abstract class JobField {
 
-    private static int nextId = 1;
-
     private int id;
+    private static int nextId = 1;
     private String value;
 
     public JobField() {
@@ -20,17 +19,21 @@ public abstract class JobField {
         this.value = value;
     }
 
+    public String toString() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        JobField that = (JobField) o;
-        return id == that.getId();
+        if (!(o instanceof JobField)) return false;
+        JobField jobField = (JobField) o;
+        return id == jobField.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value);
+        return Objects.hash(id);
     }
 
 
@@ -48,8 +51,8 @@ public abstract class JobField {
         this.value = value;
     }
 
-    public boolean isFieldEmpty () {
-        return value.isEmpty();
-    }
+//    public boolean isFieldEmpty () {
+//        return value.isEmpty();
+//    }
 }
 
